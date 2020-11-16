@@ -1,0 +1,75 @@
+# Questions 1:
+# How to import pandas and check the version?
+import pandas as pd
+print(pd.__version__)
+
+# Output :
+# 1.1.4
+# 
+# Process finished with exit code 0
+
+# Questions 2:
+# How to create a series from a numpy array?
+
+import numpy as np
+
+import pandas as pd
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 91, 2, 4, 5, 8, 9, 6, 5, 4, 3, 2, 5])
+print("Array of numpy is :", arr)
+
+print("Series of pandas is :", pd.Series(arr))
+
+# Questions 3:
+# How to convert the index of a series into a column of a dataframe ?
+
+import pandas as pd
+
+my_series = pd.Series([1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5, 6, 7, 8, 9])
+print("Series is :", my_series)
+
+print("index of a series into a column of a data frame :", my_series.to_frame().reset_index())
+
+# Questions 4:
+# Write the code to list all the datasets available in seaborn library.
+# Load the 'mpg' dataset
+# Note: mpg dataset will be read from seaborn module in the manner sir has already shown(provided in the
+# materials folder)
+import seaborn as sb
+import pandas as pd
+print("All dataset present in the seaborn library :", sb.get_dataset_names()) # list of all dataset in the seaborn
+print()
+
+mpg = sb.load_dataset('mpg')
+print("mpg data set from seaborn :", mpg) # loading mpg data set from seaborn library
+print()
+print("'anagrams' data set from seaborn :", sb.load_dataset('anagrams'))
+print()
+print("car_crashes data set from seaborn :", sb.load_dataset('car_crashes'))
+print()
+print(pd.read_csv("student_records.csv")) # loading user data set using pandas library
+
+# Questions 5:
+# Which country origin cars are a part of this dataset?
+
+import seaborn as sb
+import pandas as pd
+data_set = sb.load_dataset('mpg')
+print(data_set)
+
+df = pd.DataFrame(data_set)
+print(" country origin :", df.origin.unique())
+
+# Questions 6:
+# Extract the part of the dataframe which contains cars belonging to 'usa'
+
+import seaborn as sb
+import pandas as pd
+
+data_set = sb.load_dataset('mpg')
+print(data_set)
+
+df = pd.DataFrame(data_set)
+
+print(" Data set extracted only for usa :", df[df['origin'].str.contains("usa")])
+
